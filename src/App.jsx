@@ -7,6 +7,8 @@ import {
 import Header from './Header'
 import Home from './Home'
 import About from './About'
+import Login from './Login'
+import { Button } from 'semantic-ui-react'
 
 const Topic = ({ match }) => (
   <div>
@@ -42,21 +44,23 @@ const Topics = ({ match }) => (
   </div>
 )
 
-const BasicExample = () => (
-  <Router>
-    <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics">Topics</Link></li>
-      </ul>
+const App = () => (
+  <div className="App">
+    <Router>
+      <div>
+      <Link to="/"><Button>Home</Button></Link>
+      <Link to="/topics"><Button>Topics</Button></Link>
+      <Link to="/about"><Button>About</Button></Link>
+      <Link to="/login"><Button>Login</Button></Link>
 
-      <hr/>
+        <hr/>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/topics" component={Topics}/>
-    </div>
-  </Router>
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+        <Route path="/topics" component={Topics}/>
+        <Route path="/login" component={Login}/>
+      </div>
+    </Router>
+  </div>
 )
-export default BasicExample
+export default App

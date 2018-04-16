@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'material-ui/Button';
+import { Button } from 'semantic-ui-react';
 
 class Header extends Component {
   render() {
