@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-const PasswordChangeForm extends Component {
+class PasswordChangeForm extends Component {
   constructor(props) {
     super(props);
 
@@ -29,35 +29,36 @@ const PasswordChangeForm extends Component {
       .catch(error => {
         this.setState(byPropKey('error', error));
       });
-  event.preventDefault();
-}
+    event.preventDefault();
+  }
 
-render() {
-  const {
-    passwordOne,
-    passwordTwo,
-    error,
-  } = this.state;
+  render() {
+    const {
+      passwordOne,
+      passwordTwo,
+      error,
+    } = this.state;
 
-  const isInvalid = 
-    passwordOne !== passwordTwo ||
-    passwordOne === '';
-  
-  return (
-    <form onSubmit={this.onSubmit}>
-      <input
-        value={passwordOne}
-        onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
-        type="password"
-        placeholder="New Password"
-      />
-      <button disabled={isInvalid} type="submit">
-        Reset My Password
-      </button>
+    const isInvalid = 
+      passwordOne !== passwordTwo ||
+      passwordOne === '';
+    
+    return (
+      <form onSubmit={this.onSubmit}>
+        <input
+          value={passwordOne}
+          onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
+          type="password"
+          placeholder="New Password"
+        />
+        <button disabled={isInvalid} type="submit">
+          Reset My Password
+        </button>
 
-      { error && <p>{error.message}</p> }
-    </form>
-  );
+        { error && <p>{error.message}</p> }
+      </form>
+    );
+  }
 }
 
 export default PasswordChangeForm;
